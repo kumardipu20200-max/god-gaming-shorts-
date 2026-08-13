@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GOD GAMING 100K27 • Free Shorts</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0b0b10;color:#fff}
+header{padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:#12121a;position:sticky;top:0;z-index:5}
+.logo{font-weight:800;font-size:20px}.logo span{color:#ff304f}
+nav a{color:#fff;text-decoration:none;margin-left:18px}
+.hero{padding:60px 5%;text-align:center;background:linear-gradient(135deg,#19192a,#0b0b10)}
+.hero h1{font-size:42px;margin:10px 0}.hero p{color:#bbb;max-width:650px;margin:15px auto 25px}
+.btn{display:inline-block;background:#ff304f;color:#fff;padding:13px 22px;border-radius:9px;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.wrap{max-width:1100px;margin:auto;padding:35px 5%}
+.search{width:100%;padding:14px;border-radius:9px;border:1px solid #292936;background:#15151e;color:#fff;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#15151e;border:1px solid #272733;border-radius:14px;overflow:hidden}
+.thumb{height:210px;background:#252533;display:flex;align-items:center;justify-content:center;font-size:55px}
+.card-body{padding:16px}.card h3{margin:0 0 8px}.card p{color:#aaa;font-size:14px}
+.download{width:100%;margin-top:8px}
+.note{background:#171722;border-left:4px solid #ff304f;padding:16px;border-radius:8px;color:#ccc}
+footer{text-align:center;color:#888;padding:35px}
+.modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;padding:20px;z-index:10}
+.box{background:#171722;border:1px solid #333;border-radius:16px;max-width:430px;padding:25px;text-align:center}
+.box h2{margin-top:0}.box p{color:#bbb;line-height:1.5}.close{background:#292936;margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">GOD GAMING <span>100K27</span></div>
+  <nav><a href="#videos">Videos</a><a href="#license">License</a></nav>
+</header>
+
+<section class="hero">
+  <h1>Free Shorts Video Library 🎬</h1>
+  <p>Downloadable Shorts for creators. Use only videos marked as licensed for reuse and follow the license shown with each video.</p>
+  <a class="btn" href="https://www.youtube.com/@GODGAMING100K27" target="_blank">🔴 Subscribe on YouTube</a>
+</section>
+
+<main class="wrap" id="videos">
+  <h2>Latest Shorts</h2>
+  <input class="search" id="search" placeholder="🔎 Search videos...">
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="wrap" id="license">
+  <div class="note">
+    <b>📜 License:</b> केवल वही वीडियो reuse/download करें जिनके card पर reuse permission दी गई है।
+    वीडियो के साथ दिए गए license terms को पढ़ें। बिना अधिकार वाले music, logos, clips या third-party material के लिए यह वेबसाइट जिम्मेदार नहीं है।
+  </div>
+</section>
+
+<footer>© 2026 GOD GAMING 100K27 • Free Shorts Library</footer>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h2>🔴 Subscribe to Download</h2>
+    <p>Download से पहले हमारे YouTube चैनल को subscribe करें। YouTube पर subscribe करने के बाद वापस आकर नीचे “Continue” दबाएँ।</p>
+    <a class="btn" href="https://www.youtube.com/@GODGAMING100K27" target="_blank">Subscribe</a>
+    <button class="btn close" onclick="continueDownload()">Continue to Download</button>
+  </div>
+</div>
+
+<script>
+const videos=[
+ {title:"Amazing 3D Short #1",license:"Reuse allowed",file:"videos/short1.mp4"},
+ {title:"Amazing 3D Short #2",license:"Reuse allowed",file:"videos/short2.mp4"},
+ {title:"Amazing 3D Short #3",license:"Reuse allowed",file:"videos/short3.mp4"}
+];
+
+const grid=document.getElementById("grid"), modal=document.getElementById("modal");
+let selected=null;
+
+function render(list){
+ grid.innerHTML=list.map((v,i)=>`
+ <article class="card">
+   <div class="thumb">▶️</div>
+   <div class="card-body">
+    <h3>${v.title}</h3>
+    <p>📜 ${v.license}</p>
+    <button class="btn download" onclick="startDownload(${i})">⬇️ Download</button>
+   </div>
+ </article>`).join("");
+}
+function startDownload(i){selected=i;modal.style.display="flex"}
+function continueDownload(){
+ if(selected===null)return;
+ const a=document.createElement("a");
+ a.href=videos[selected].file;a.download="";
+ document.body.appendChild(a);a.click();a.remove();
+ modal.style.display="none";
+}
+document.getElementById("search").addEventListener("input",e=>{
+ const q=e.target.value.toLowerCase();
+ render(videos.filter(v=>v.title.toLowerCase().includes(q)));
+});
+render(videos);
+</script>
+</body>
+</html>
